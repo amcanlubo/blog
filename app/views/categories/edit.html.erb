@@ -1,0 +1,22 @@
+<%= form_with scope: :category, url: category_path, local: true, method: :patch do |f| %>
+<h1> Edit Category </h1>
+<p>
+    <% if @category.errors.any? %>
+        <ul>
+            <% @category.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</p>
+
+<p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name%>
+</p>
+
+<%= link_to '<< return', category_path%>
+<%= f.submit %>
+
+<% end %> 
+

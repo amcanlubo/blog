@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
   root "articles#index"
 
   get '/articles' => 'articles#index'
@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   patch '/articles/:id' => 'articles#update', as: 'update_article'
   delete '/articles/:id' => 'articles#delete', as: 'delete_article'
 
-  # resources :articles
+  resources :categories
+  
 end
+                                                                                                          
