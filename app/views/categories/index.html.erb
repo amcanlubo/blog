@@ -11,6 +11,9 @@
                 <td><%= category.name %></td>
                 <td><%= link_to "Show", category_path(category) %></td>
                 <td><%= link_to "Edit", edit_category_path(category) %></td>
+                <td><%= link_to "Delete", category_path(category), 
+                                method: :delete,
+                                data: { confirm: "Are you sure you want to delete this category?" }%></td>
             </tr>
         <% end %>
     </tbody>
