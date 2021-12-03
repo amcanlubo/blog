@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+<% if @category.tasks.any? %> 
+<div class='flex justify-between'>
+  <p class='text-2xl'><strong> All Tasks</strong></p>
+  <p><%= link_to 'New Task', new_category_task_path(@category) ,class:'text-lg underline' %></p>
+</div>
+<br>
+
+<section class="container mx-auto p-6 font-mono">
+  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+    <div class="w-full overflow-x-auto">
+
+<table class="w-full">
+  <thead>
+    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+      <th class="px-4 py-3">Category</th>
+      <th class="px-4 py-3">Name</th>
+      <th class="px-4 py-3">Body</th>
+      <th class="px-4 py-3">Task date</th>
+      <th class="px-4 py-3">Created at</th>
+      <th class="px-4 py-3" colspan="4">Action</th>
+    </tr>
+  </thead>
+
+  <tbody class="bg-white">
+    <% @tasks.each do |task| %>
+      <tr class="text-gray-700">
+        <td class="text-center"><%= task.category_id %></td>
+        <td><%= task.name %></td>
+        <td><%= task.body %></td>
+        <td><%= task.task_date %></td>
+        <td><%= task.created_at.strftime('%a, %m/%d/%Y, %I:%M%p') %></td>
+        <td><%= link_to 'Show', category_task_path(@category.id, task)%></td>
+        <td><%= link_to 'Edit', edit_category_task_path(@category.id, task) %></td>
+        <td><%= link_to 'Destroy', category_task_path(@category.id, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+        <h1>Congrats! no tasks yet :( </h1>
+<% end %>
+<br>
+</div>
+
+<div class="h-auto bg-yellow-500 text-black m-5 py-5 px-10 rounded-md absolute top-0 right-0">
+        <h1 class='text-2xl text-center font-bold'>TASKS FOR TODAY</h1>
+        <p class='text-center'><%= DateTime.now.strftime('%a, %d/%b/%Y') %></p>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th class='text-center'>Name</th>
+        <th class='text-center'>Body</th>
+        <th class='text-center'>Task date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @tasks.each do |task| %>
+      <% if task.task_date == Date.today %>
+          <tr>
+            <td class='text-center'><%= task.name %></td>
+            <td class='text-center'><%= task.body %></td>
+            <td class='text-center'><%= task.task_date %></td>  
+      <%# <% else %>
+        <%# <h1>No tasks today :( </h1> %>
+      <% end %>  
+    <% end %>  
+        </tr>
+    </tbody>
+  </table>
+</div>

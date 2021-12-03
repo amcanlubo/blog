@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
     
     def index
-        @articles = Article.all 
+        @articles = Article.all.order("created_at ASC")
     end
 
     def show
         @article = Article.find(params[:id])
+        @comments = @article.comments
     end
 
     def new
@@ -37,9 +38,11 @@ class ArticlesController < ApplicationController
         end 
     end
 
-    def delete
+
+    def destroy
         @article = Article.find(params[:id])
         @article.destroy
+    
         redirect_to root_path
     end
 

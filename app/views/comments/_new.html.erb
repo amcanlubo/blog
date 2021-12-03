@@ -1,0 +1,13 @@
+<div class='p-5'>
+    <%= form_with model:[@article, @comment], local: true do |f| %>
+    <h1> Create New Comment </h1>
+    
+
+    <p>
+        <%= f.label :body %><br/>
+        <%= f.text_field :body, class: 'w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500' %>
+    </p>
+        <%= link_to '<< return', article_comments_path %>
+        <%= f.submit 'Create comment', class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' %>
+    <% end %> 
+</div>

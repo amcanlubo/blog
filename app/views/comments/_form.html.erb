@@ -1,0 +1,9 @@
+<%= form_with model:[@article, @article.comments.build ], local: true do |f| %>
+   
+    <p>
+        <%# <%= f.label :body %> 
+        <%= f.text_field :body, class: 'w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500' %>
+    </p>
+        
+        <%= f.submit 'Create comment', class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' %>
+<% end %> 

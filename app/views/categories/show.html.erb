@@ -1,6 +1,17 @@
-<h1>Categories</h1>
-<p><%= @category.name %></p>
 
-
-<%= link_to '<< return', categories_path%>
-<%= link_to "Edit", edit_category_path(@category) %>
+<div class="w-screen bg-gray-300 h-screen flex justify-items-center">
+    <div class="h-auto bg-white text-black m-5 py-5 px-10 rounded-md">
+        
+            <p class='text-2xl'><strong>CATEGORY: </strong><%= @category.name %></p>
+            <br>
+            
+            
+        <%= render 'tasks/index', tasks: @tasks %>     
+        
+        
+    </div>
+        <p class='absolute bottom-8 left-8'>
+            <%= link_to '<< return', categories_path%>
+            <%= link_to "Edit Category", edit_category_path(@category) %>
+        </p>
+</div>

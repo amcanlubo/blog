@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @tasks = @category.tasks
   end
 
 
@@ -21,6 +22,8 @@ class CategoriesController < ApplicationController
         
         if @category.save
             redirect_to categories_path
+            # redirect_to @category
+            flash[:notice] = "Category was successfully created."
         else
             render :new
         end
@@ -35,14 +38,16 @@ class CategoriesController < ApplicationController
 
     if @category.update(category_params)
         redirect_to category_path(@category)
+        flash[:notice] = "Category was successfully updated."
     else
         render :edit
     end 
   end
 
-  def delete
+  def destroy
     @category = Category.find(params[:id])
     @category.destroy
+    flash[:notice] = "Category was successfully deleted."
     redirect_to categories_path
   end
 

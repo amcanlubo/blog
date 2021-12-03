@@ -1,0 +1,22 @@
+<div class='p-5'>
+    <%= form_with(model: [@article,@comment],  method: :put) do |f|%>
+    <p>
+        <% if @comment.errors.any? %>
+            <ul>
+                <% @comment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
+
+    <p>
+        <%= f.label :body%><br/>
+        <%= f.text_field :body%>
+    </p>
+
+        <%= link_to '<< back', @comment.article%>
+        <%= f.submit class:'bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded' %>
+        
+    <% end %>
+</div>

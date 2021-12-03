@@ -1,3 +1,5 @@
 class Category < ApplicationRecord
-    validates :name, presence: true, length: { minimum: 10 }
+    validates :name, presence: true, uniqueness: true, length: { minimum: 6 }
+
+    has_many :tasks
 end

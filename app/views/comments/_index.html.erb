@@ -1,0 +1,30 @@
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Body</th>
+                <th class='pr-5' colspan="3">Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <% @comments.each do |comment| %>
+                <tr>
+                    <td><%= comment.id %></td>
+                    <td><%= comment.body %></td>
+                    <td><%= comment.created_at.strftime('%a, %m/%d/%Y, %I:%M%p') %></td>
+                    <td><%= link_to 'Edit', edit_article_comment_path(@article.id, comment), class: 'text-blue-500' %></td>
+                    <td><%= link_to 'Delete', article_comment_path(@article.id, comment), 
+                                    method: :delete, 
+                                    data: { confirm: 'Are you sure?'} , class: 'text-red-500' %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%# <%= link_to '<< return', root_path %> 
+    <%# <button class="bg-yellow-500 hover:bg-yellow-700 text-white p-2 font-bold rounded"> %>
+    <%# <%= link_to 'New Comment', new_article_comment_path(@article) %> 
+    <%# </button> %>
