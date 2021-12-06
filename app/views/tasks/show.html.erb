@@ -21,4 +21,7 @@
 </p>
 
 <%= link_to 'Edit', edit_category_task_path(@category, @task) %> |
-<%= link_to 'Back', @task.category %>
+<%= link_to 'Delete', category_task_path(@category, @task), method: :delete, data: { confirm: 'Are you sure?' } %></td> |
+<%= link_to 'Back to categories', @task.category %> |
+<%# <%= link_to 'Back', category_path(@category.id) %> 
+<%= link_to 'Back to main', categories_path %>

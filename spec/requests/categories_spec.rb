@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'CategoriesControllers', type: :request do
 
-  before :each do
+  before (:each) do
+    sign_in create(:user)
     Category.destroy_all
     Category.create!(name:'A valid name')
+  end
+
+  after(:all) do
+    User.destroy_all
   end
 
   describe 'GET categories#index' do
@@ -43,10 +48,9 @@ RSpec.describe 'CategoriesControllers', type: :request do
 
   describe 'GET categories#edit' do
     it 'redirects to edit page' do
-      Category.create(name: 'editthiscategory')
+      Category.create!(name: 'editthiscategory')
       get edit_category_path(Category.last.id)
       expect(response).to be_successful
-      # expect(response).to render_template(:edit)
     end
 
     it 'updates the category' do

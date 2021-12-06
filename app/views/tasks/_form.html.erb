@@ -19,20 +19,20 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"shadow appearance-none border rounded w-72 py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class:"shadow appearance-none border rounded w-72 py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div class="field">
     <%= form.label :task_date %>
-    <%= form.date_select :task_date %>
+    <%= form.date_field :task_date %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

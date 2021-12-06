@@ -2,16 +2,19 @@
 <div class="w-screen bg-gray-300 h-screen flex justify-items-center">
     <div class="h-auto bg-white text-black m-5 py-5 px-10 rounded-md">
         
-            <p class='text-2xl'><strong>CATEGORY: </strong><%= @category.name %></p>
-            <br>
+        <p class='text-2xl'><strong>CATEGORY: </strong><%= @category.name %></p>
+        <br>
             
             
-        <%= render 'tasks/index', tasks: @tasks %>     
-        
-        
+        <%= render "tasks/index", tasks: @tasks %>
+        <%# <%= link_to 'New Task', new_category_task_path(@category.id) %> 
+       
     </div>
+
         <p class='absolute bottom-8 left-8'>
-            <%= link_to '<< return', categories_path%>
+            <%= link_to '<< return', categories_path %>
             <%= link_to "Edit Category", edit_category_path(@category) %>
         </p>
+        
 </div>
+

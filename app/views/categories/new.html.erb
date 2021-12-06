@@ -1,21 +1,23 @@
-<%= form_with(model: @category) do |f| %>
-<h1> Create New Category </h1>
-<p>
-    <% if @category.errors.any? %>
-        <ul>
-            <% @category.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-        </ul>
-    <% end %>
-</p>
+<div class='p-5'>
+    <%= form_with(model: @category) do |f| %>
+    <h1 class='text-2xl'> Create New Category </h1>
+    <p>
+        <% if @category.errors.any? %>
+            <ul>
+                <% @category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
 
-<p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-</p>
+    <p>
+        <%= f.label :name , class:"block text-gray-700 text-sm font-bold mb-2"%><br/>
+        <%= f.text_field :name, class:"shadow appearance-none border rounded w-72 py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </p>
+    <br>
+    <%= link_to '<< return', categories_path%>
+    <%= f.submit class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
 
-<%= link_to '<< return', categories_path%>
-<%= f.submit %>
-
-<% end %> 
+    <% end %> 
+</div>

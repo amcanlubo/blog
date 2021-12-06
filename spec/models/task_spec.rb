@@ -50,7 +50,7 @@ RSpec.describe Task, type: :model do
     context 'Task Validations' do
       it '1. Is not valid without a name' do
         # task = category.tasks.new(category_id: Category.last.id, name:nil, body:"A valid task body",task_date: Date.current)
-
+        # taskk = category.tasks.new :name => nil
         task.name = nil
         expect(task).to_not be_valid
         expect(task.errors).to be_present
